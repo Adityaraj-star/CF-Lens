@@ -15,6 +15,9 @@ def process_submissions(raw):
             "verdict":     s.get("verdict", "UNKNOWN"),
             "language":    s.get("programmingLanguage", "Unknown"),
             "prob_name":   prob.get("name", "Unknown"),
+            "contest_id":  prob.get("contestId"),
+            "prob_index":  prob.get("index"),
+            "prob_id":     f"{prob.get('contestId')}{prob.get('index')}",
             "prob_rating": prob.get("rating"),
             "tags":        prob.get("tags", []),
         })
