@@ -1,5 +1,6 @@
 import time
 import requests
+from src import cache
 
 BASE_URL = "https://codeforces.com/api"
 TIMEOUT = 10
@@ -52,9 +53,34 @@ def fetch_user_info(handle):
 
 
 def fetch_submissions(handle, count=10000):
+    cache_key = f"subs_{handle}"
+    cached = cache.get(cache_key, ttl=3600)
+    if cached is not None:
+        return cached
+    
     data = _make_request("user.status", {"handle": handle, "count": count})
-    return [s for s in data if "problem" in s]
+    result =  [s for s in data if "problem" in s]
+    cache.set(cache_key, result)
+    return result
 
 
 def fetch_contest_history(handle):
-    return _make_request("user.rating", {"handle": handle})
+    cache_key = f"contests_{handle}"
+    cached = cache.get(cache_key, ttl=3600)
+    if cached is not None:
+        return cached
+    
+    result =  _make_request("user.rating", {"handle": handle})
+    cache.set(cache_key, result)
+    return result
+
+
+def fetch_problemset():
+    cached = cache.get("problemset", ttl=86400)
+    if cached is not None:
+        return cached
+
+    result = _make_request("problemset.problems", {})
+    problems = result["problems"]
+    cache.set("problemset", problems)
+    return problems
