@@ -1,7 +1,8 @@
 import sys
 import os
 
-from src.fetcher import fetch_user_info, fetch_submissions, fetch_contest_history
+from src.fetcher import fetch_user_info, fetch_submissions, fetch_contest_history, fetch_problemset
+from src.recommender import build_problem_pool, get_recommendations
 from src.processor import process_submissions, process_contests, get_weak_topics
 from src.visualizer import build_dashboard
 
@@ -39,6 +40,23 @@ def main():
     else:
         for t in weak_topics:
             print(f"- {t['tag']} ({t['success_rate']}% success, {t['attempts']} attempts)")
+
+    print("\nFetching problem set for recommendations...")
+    problems_raw = fetch_problemset()
+    problems_df = build_problem_pool(problems_raw)
+
+    recommendations = get_recommendations(weak_topics, problems_df, subs_df, user.get("rating"))
+
+    print("\nRecommended Practice Problems:")
+    if not recommendations:
+        print("Not enough data for recommendations")
+    else:
+        for tag, probs in recommendations.items():
+            print(f"\n  {tag}:")
+            if not probs:
+                print("    No matching problems found in your rating range")
+            for p in probs:
+                print(f"    - {p['name']} ({p['rating']}) -> {p['url']}")
 
     os.makedirs("output", exist_ok=True)
 
