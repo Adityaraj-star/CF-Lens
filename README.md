@@ -7,6 +7,12 @@ It fetches submission data using the Codeforces API, finds patterns in it, and g
 
 ---
 
+## Dashboard Preview
+
+![CF-Lens dashboard example](assets/dashboard_example.png)
+
+---
+
 ## Features
 
 * Fetches up to 10,000 submissions from Codeforces
@@ -89,7 +95,7 @@ Done! Saved at -> output/Aditya_Raj_001_dashboard.png
 Output file:
 
 ```text
-output/<your-handle>_dashboard.png
+output/_dashboard.png
 ```
 
 ---
