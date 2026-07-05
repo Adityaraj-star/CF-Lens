@@ -49,27 +49,47 @@ The dashboard will be saved in the `output/` folder.
 
 ## Example Output
 
-Console:
+Console (real run against my own handle):
 
 ```text
+Enter Codeforces handle: Aditya_Raj_001
+Fetching user data...
+User:  Aditya_Raj_001
+Rating: 1253 | Rank: pupil
+Getting submissions...
+Total submissions fetched: 495
+Getting contest history...
+Total contests: 38
+Processing data...
 Weak Topics:
-- dp (32.5% success, 40 attempts)
-- graphs (41.2% success, 25 attempts)
-
+- *special (23.1% success, 13 attempts)
+- hashing (25.0% success, 4 attempts)
+- shortest paths (50.0% success, 2 attempts)
+- geometry (57.1% success, 7 attempts)
+- combinatorics (60.0% success, 15 attempts)
+Fetching problem set for recommendations...
 Recommended Practice Problems:
-
-  dp:
-    - Simple Skewness (1400) -> https://codeforces.com/problemset/problem/1946/A
-    - Painting Fence (1500) -> https://codeforces.com/problemset/problem/448/C
-
-  graphs:
-    - Bipartite Checking (1400) -> https://codeforces.com/problemset/problem/862/B
+  hashing:
+    - Incremental Path (1300) -> https://codeforces.com/problemset/problem/2150/A
+    - Yarik and Musical Notes (1300) -> https://codeforces.com/problemset/problem/1899/D
+    - Reverse String (1300) -> https://codeforces.com/problemset/problem/1553/B
+    - OR in Matrix (1300) -> https://codeforces.com/problemset/problem/486/B
+    - Registration System (1300) -> https://codeforces.com/problemset/problem/4/C
+  geometry:
+    - Bessie's Birthday Cake (Easy Version) (1300) -> https://codeforces.com/problemset/problem/1942/C1
+    - Shawarma Tent (1300) -> https://codeforces.com/problemset/problem/1271/C
+    - Cow and Friend (1300) -> https://codeforces.com/problemset/problem/1307/B
+    - New Year and North Pole (1300) -> https://codeforces.com/problemset/problem/750/B
+    - Where do I Turn? (1300) -> https://codeforces.com/problemset/problem/227/A
+Building dashboard...
+Saved output/Aditya_Raj_001_dashboard.png
+Done! Saved at -> output/Aditya_Raj_001_dashboard.png
 ```
 
 Output file:
 
 ```text
-output/_dashboard.png
+output/<your-handle>_dashboard.png
 ```
 
 ---
